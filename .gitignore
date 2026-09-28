@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+*.egg-info/
+build/
+dist/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Raw and derived datasets are never committed (ODbL/DbCL licence; ~150 MB).
+# Recreate with: uv run python -m fraud.data download
+data/*
+!data/provenance.json
+
+# Model artefacts are committed selectively after a size review (see docs/adr.md).
+artifacts/**/*.joblib
+artifacts/**/*.pkl
+
+# Frontend (added in the dashboard stage)
+node_modules/
+frontend/dist/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
