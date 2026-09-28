@@ -1,0 +1,64 @@
+{
+  "source_content_sha256": "89c01ac0ac68d8c9dbae20658289780d659ad7fa40e6f6989733f1d7bbc9cf22",
+  "deduplication": {
+    "rows_before": 284807,
+    "exact_duplicates_removed": 1081,
+    "fraud_duplicates_removed": 19,
+    "rows_after": 283726,
+    "conflicting_label_groups": 0
+  },
+  "split_fractions": {
+    "train": 0.6,
+    "validation": 0.2,
+    "test": 0.2
+  },
+  "splits": {
+    "train": {
+      "rows": 170236,
+      "fraud": 342,
+      "legit": 169894,
+      "fraud_rate": 0.002009,
+      "time_min_seconds": 0.0,
+      "time_max_seconds": 120393.0,
+      "transaction_ids_sha256": "6e5676aa4e1c7f0e3c7da6c5f909763f630184956910d28a01e1adbde9044741"
+    },
+    "validation": {
+      "rows": 56746,
+      "fraud": 57,
+      "legit": 56689,
+      "fraud_rate": 0.001004,
+      "time_min_seconds": 120394.0,
+      "time_max_seconds": 145234.0,
+      "transaction_ids_sha256": "0674721797fd75eacaec0b7429ed81b4317cc540a4f4cf39110a0c2ca7eabf49"
+    },
+    "test": {
+      "rows": 56744,
+      "fraud": 74,
+      "legit": 56670,
+      "fraud_rate": 0.001304,
+      "time_min_seconds": 145235.0,
+      "time_max_seconds": 172792.0,
+      "transaction_ids_sha256": "a3fd89aabf7cd5efd848a37f7865e026833b6624dd92a09f0696b378d3948b8d"
+    }
+  },
+  "model_visible_overlap_with_train": {
+    "validation": {
+      "rows_also_in_train": 561,
+      "fraud_rows_also_in_train": 0,
+      "share_of_split": 0.009886
+    },
+    "test": {
+      "rows_also_in_train": 648,
+      "fraud_rows_also_in_train": 0,
+      "share_of_split": 0.01142
+    }
+  },
+  "demo_subset": {
+    "source_split": "validation",
+    "rows": 2057,
+    "fraud": 57,
+    "legit_sample": 2000,
+    "seed": 20260927,
+    "transaction_ids_sha256": "e9b75085f13156c2239afb31bc99080c01662160701eb3dd7cc912c3e5d7aea7"
+  }
+}
