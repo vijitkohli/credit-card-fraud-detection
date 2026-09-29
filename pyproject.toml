@@ -5,9 +5,12 @@ description = "Real-time credit card fraud detection POC with a grounded explana
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
 dependencies = [
+    "matplotlib>=3.11.2",
     "numpy>=2.0",
     "pandas>=2.2",
     "pyarrow>=17",
+    "scikit-learn>=1.9.1",
+    "xgboost>=3.4.1",
 ]
 
 [dependency-groups]
