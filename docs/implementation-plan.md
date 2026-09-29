@@ -25,7 +25,12 @@ Each stage ends with runnable, tested output and one commit. Decisions are in `a
 - Tests: split coverage, strict time ordering, boundary ties, determinism, demo subset only
   from validation, feature parity between single rows and batches, overlap detection.
 
-## Stage 2: Models and validation (test set untouched)
+## Stage 2: Models and validation (test set untouched) ⏸ awaiting checkpoint
+
+Validation experiment done (`python -m fraud.experiment`, report in `reports/validation/`).
+`load_split("test")` now refuses to load the test split unless called with `allow_test=True`.
+The number of XGBoost boosting rounds is chosen on the last 15% of the training period,
+then the model is refit on the full training period. Freezing is waiting on the review below.
 
 - Train Logistic Regression, Isolation Forest and XGBoost (small grid, early stopping,
   `scale_pos_weight` in {1, √ratio}).
