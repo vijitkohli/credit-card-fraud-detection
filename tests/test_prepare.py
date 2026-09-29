@@ -109,6 +109,11 @@ def test_cross_split_overlap_detects_time_shifted_repeats():
     assert overlap["validation"]["rows_also_in_train"] == 0
 
 
+def test_test_split_is_held_out_by_default():
+    with pytest.raises(PermissionError, match="held out"):
+        prepare.load_split("test")
+
+
 @pytest.mark.data
 @pytest.mark.skipif(not prepare.TRANSACTIONS_PATH.exists(), reason="run fraud.prepare first")
 def test_prepared_real_data_is_consistent():

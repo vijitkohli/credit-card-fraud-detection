@@ -175,9 +175,18 @@ def prepare() -> dict[str, Any]:
     return summary
 
 
-def load_split(name: str) -> pd.DataFrame:
+def load_split(name: str, allow_test: bool = False) -> pd.DataFrame:
+    """Load one split in time order.
+
+    The test split is held out until the model, preprocessing and threshold are frozen;
+    only the one-time final evaluation passes `allow_test=True`.
+    """
     if name not in SPLIT_FRACTIONS:
         raise ValueError(f"Unknown split {name!r}")
+    if name == "test" and not allow_test:
+        raise PermissionError(
+            "The test split is held out; pass allow_test=True only for the final evaluation"
+        )
     df = pd.read_parquet(TRANSACTIONS_PATH)
     return df[df["split"] == name].reset_index(drop=True)
 
