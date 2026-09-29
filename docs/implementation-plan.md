@@ -25,12 +25,16 @@ Each stage ends with runnable, tested output and one commit. Decisions are in `a
 - Tests: split coverage, strict time ordering, boundary ties, determinism, demo subset only
   from validation, feature parity between single rows and batches, overlap detection.
 
-## Stage 2: Models and validation (test set untouched) ⏸ awaiting checkpoint
+## Stage 2: Models and validation (test set untouched) ✅
 
-Validation experiment done (`python -m fraud.experiment`, report in `reports/validation/`).
-`load_split("test")` now refuses to load the test split unless called with `allow_test=True`.
-The number of XGBoost boosting rounds is chosen on the last 15% of the training period,
-then the model is refit on the full training period. Freezing is waiting on the review below.
+- Validation experiment: `python -m fraud.experiment`, report in `reports/validation/`.
+- `load_split("test")` refuses to load the test split unless called with `allow_test=True`.
+- Decisions recorded in `adr.md` (Stage 2 decisions): XGBoost, no time feature, Isolation
+  Forest as comparison only, threshold 0.103254 at 5 false alerts per 10k.
+- Frozen with `python -m fraud.train` into `artifacts/model-v1/` (byte-reproducible).
+  `fraud.artifacts.load()` verifies file hashes before loading.
+- Reference percentiles for explanations are deferred to Stage 4, where the evidence
+  object is designed. They are computed from train only and do not change the model.
 
 - Train Logistic Regression, Isolation Forest and XGBoost (small grid, early stopping,
   `scale_pos_weight` in {1, √ratio}).
