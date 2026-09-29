@@ -1,0 +1,174 @@
+{
+  "evaluated_at": "2026-09-29T07:46:20+00:00",
+  "model_version": "model-v1",
+  "git": {
+    "commit": "df1d962a1cd47d6c886e734887ff3bb6a0a0bf00",
+    "artifacts_match_commit": true,
+    "uncommitted_src_changes": [
+      "?? src/fraud/evaluate.py"
+    ]
+  },
+  "artifact_hashes": {
+    "xgboost.ubj": "b2d31895cbdfe41f7b142d8fa047d22fb37246b75d3403bb60318efdc9f62743",
+    "logistic_regression.joblib": "cd8c753bcef5c6668de7ff251a20465197b168270b709cec0a1c6892d1113b3f",
+    "isolation_forest.joblib": "1a944c4c063696c2f2a3233ea8214922d532ebcc3ed7caf142ee7191d535576a"
+  },
+  "metadata_sha256": "8d08a6ddf3754381bfaa2be80320bbbb10596aae2f8c77135b8469366c3c80a2",
+  "fp_budget_per_10k": 5,
+  "test": {
+    "rows": 56744,
+    "fraud": 74,
+    "legit": 56670,
+    "transaction_ids_sha256": "a3fd89aabf7cd5efd848a37f7865e026833b6624dd92a09f0696b378d3948b8d"
+  },
+  "baselines": {
+    "flag_nothing": {
+      "accuracy": 0.9986958973635979,
+      "recall": 0.0
+    }
+  },
+  "validation_reference": {
+    "threshold": 0.10325406491756439,
+    "tp": 45,
+    "fp": 28,
+    "fn": 12,
+    "tn": 56661,
+    "precision": 0.6164383561643836,
+    "recall": 0.7894736842105263,
+    "f1": 0.6923076923076923,
+    "false_positive_rate": 0.0004939229832948191,
+    "false_alerts_per_10k_legit": 4.939229832948191,
+    "flagged": 73,
+    "auprc": 0.7823457922769176,
+    "roc_auc": 0.9859802932157079
+  },
+  "results": {
+    "xgboost": {
+      "role": "production",
+      "threshold_source": "validation (frozen)",
+      "auprc": 0.7884821353549704,
+      "roc_auc": 0.9821140886784084,
+      "at_frozen_threshold": {
+        "threshold": 0.10325406491756439,
+        "tp": 58,
+        "fp": 28,
+        "fn": 16,
+        "tn": 56642,
+        "precision": 0.6744186046511628,
+        "recall": 0.7837837837837838,
+        "f1": 0.725,
+        "false_positive_rate": 0.000494088583024528,
+        "false_alerts_per_10k_legit": 4.940885830245279,
+        "flagged": 86,
+        "ci95": {
+          "precision": [
+            0.5764609974424552,
+            0.7656333111702127
+          ],
+          "recall": [
+            0.6875,
+            0.8795301204819277
+          ],
+          "false_alerts_per_10k_legit": [
+            3.352322476414252,
+            6.88158382298449
+          ]
+        }
+      },
+      "precision_first_alternative": {
+        "budget_per_10k_on_validation": 1,
+        "threshold": 0.4146307408809662,
+        "tp": 55,
+        "fp": 9,
+        "fn": 19,
+        "tn": 56661,
+        "precision": 0.859375,
+        "recall": 0.7432432432432432,
+        "f1": 0.7971014492753623,
+        "false_positive_rate": 0.00015881418740074113,
+        "false_alerts_per_10k_legit": 1.5881418740074114,
+        "flagged": 64,
+        "ci95": {
+          "precision": [
+            0.7626916868442292,
+            0.9375473484848484
+          ],
+          "recall": [
+            0.6328932052960862,
+            0.84375
+          ],
+          "false_alerts_per_10k_legit": [
+            0.7057657978008077,
+            2.647885508981219
+          ]
+        }
+      }
+    },
+    "logistic_regression": {
+      "role": "comparison",
+      "threshold_source": "validation (frozen)",
+      "auprc": 0.7441678407220066,
+      "roc_auc": 0.9815560928848382,
+      "at_frozen_threshold": {
+        "threshold": 0.9997254648768038,
+        "tp": 52,
+        "fp": 19,
+        "fn": 22,
+        "tn": 56651,
+        "precision": 0.7323943661971831,
+        "recall": 0.7027027027027027,
+        "f1": 0.7172413793103449,
+        "false_positive_rate": 0.0003352743956237868,
+        "false_alerts_per_10k_legit": 3.3527439562378683,
+        "flagged": 71,
+        "ci95": {
+          "precision": [
+            0.6296031746031746,
+            0.8358556056924679
+          ],
+          "recall": [
+            0.5915041531238715,
+            0.8072536722231392
+          ],
+          "false_alerts_per_10k_legit": [
+            1.9409920763999047,
+            4.940713642009566
+          ]
+        }
+      }
+    },
+    "isolation_forest": {
+      "role": "comparison",
+      "threshold_source": "validation (frozen)",
+      "auprc": 0.056062244392987945,
+      "roc_auc": 0.952287305834156,
+      "at_frozen_threshold": {
+        "threshold": 0.6908699201294586,
+        "tp": 0,
+        "fp": 19,
+        "fn": 74,
+        "tn": 56651,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "false_positive_rate": 0.0003352743956237868,
+        "false_alerts_per_10k_legit": 3.3527439562378683,
+        "flagged": 19,
+        "ci95": {
+          "precision": [
+            0.0,
+            0.0
+          ],
+          "recall": [
+            0.0,
+            0.0
+          ],
+          "false_alerts_per_10k_legit": [
+            1.940890189300044,
+            4.940188432901655
+          ]
+        }
+      }
+    }
+  }
+}

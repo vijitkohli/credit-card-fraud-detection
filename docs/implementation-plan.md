@@ -45,7 +45,13 @@ Each stage ends with runnable, tested output and one commit. Decisions are in `a
   agreed, freeze model, preprocessing and threshold into `artifacts/model-v1/`.
 - Inspect artefact sizes before committing (ADR D10).
 
-## Stage 3: One-time test evaluation
+## Stage 3: One-time test evaluation ✅
+
+Run once with `python -m fraud.evaluate` at commit `df1d962` (model-v1 artefacts committed
+and unchanged). Report in `reports/test/`. At the frozen threshold, the production model
+caught 58 of 74 test frauds (recall 0.784, 95% CI 0.69–0.88) at precision 0.674 (0.58–0.77),
+with 28 false alerts (4.94 per 10k legitimate transactions). The script refuses to overwrite
+the report without `--rerun`.
 
 - Evaluate the frozen model once on the test set: all metrics, bootstrap 95% confidence
   intervals, PR curves, confusion matrix, the "flag nothing" baseline.
